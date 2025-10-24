@@ -1,5 +1,7 @@
 # 📌 规则引擎 RuleEngine 📌
 
+# 我正在参加 Gitee 2025 最受欢迎的开源软件投票活动，快来给我投票吧！https://gitee.com/activity/2025opensource?ident=IBB9GM
+
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![GitHub Stars](https://img.shields.io/github/stars/dingqianwen/rule-engine-v2)](https://github.com/dingqianwen/rule-engine-v2/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/dingqianwen/rule-engine-v2)](https://github.com/dingqianwen/rule-engine-v2/fork)
