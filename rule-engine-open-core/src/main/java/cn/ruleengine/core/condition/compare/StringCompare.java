@@ -67,8 +67,15 @@ public class StringCompare implements Compare {
             case NE:
                 return !leftValue.equals(rightValue);
             case CONTAIN:
+                // 解决 "[北京市,上海市,深圳市]".contains("") 返回true的问题，这在规则引擎中是不合理的
+                if (StrUtil.isEmpty(rightValueStr)) {
+                    return false;
+                }
                 return leftValueStr.contains(rightValueStr);
             case NOT_CONTAIN:
+                if (StrUtil.isEmpty(rightValueStr)) {
+                    return true;
+                }
                 return !leftValueStr.contains(rightValueStr);
             case STARTS_WITH:
                 // 如果右值为空，则返回false
