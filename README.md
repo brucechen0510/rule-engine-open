@@ -8,9 +8,9 @@
 [![GitHub issues](https://img.shields.io/github/issues/dingqianwen/rule-engine-v2.svg)](https://github.com/dingqianwen/rule-engine-v2/issues)
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/dingqianwen/rule-engine-v2.svg)](https://github.com/dingqianwen/rule-engine-v2/issues "Percentage of issues still open")
 
-#### 开源不易，请尊重作者劳动成果，作者白天工作，晚上下班与周末维护此项目，如果对你有帮助辛苦给个star，这是对我最大的鼓励。
-
 #### 业务逻辑实现不再依赖于代码开发，可零代码实现复杂业务逻辑。
+
+## 仅对当前项目中普通规则、参数、变量、函数开源，任何单位或个人不得对本软件商业版（体验环境）进行抄袭、复制、修改、分发、逆向工程、商业用途等任何形式的非法使用。违者将面临人民币 20 万元的法定罚款及可能的法律追责。举报侵权行为可获得实际罚款金额 40% 的现金奖励。
 
 ## 最新产品（ https://gitee.com/shaiwz/data-platform-open ）：大数据集成平台可视化拖拽式大数据集成平台后端、包含数据流、数据源、数据对齐、查询模板、完善的监控等。
 
