@@ -1,21 +1,22 @@
 # 📌 规则引擎 RuleEngine 📌
 
-# 我正在参加 Gitee 2025 最受欢迎的开源软件投票活动，快来给我投票吧！https://gitee.com/activity/2025opensource?ident=IBB9GM
-
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![GitHub Stars](https://img.shields.io/github/stars/dingqianwen/rule-engine-v2)](https://github.com/dingqianwen/rule-engine-v2/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/dingqianwen/rule-engine-v2)](https://github.com/dingqianwen/rule-engine-v2/fork)
-[![GitHub issues](https://img.shields.io/github/issues/dingqianwen/rule-engine-v2.svg)](https://github.com/dingqianwen/rule-engine-v2/issues)
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/dingqianwen/rule-engine-v2.svg)](https://github.com/dingqianwen/rule-engine-v2/issues "Percentage of issues still open")
 
-#### 业务逻辑实现不再依赖于代码开发，可零代码实现复杂业务逻辑。
+### 业务逻辑实现不再依赖于代码开发，可零代码实现复杂业务逻辑。
 
-## 仅对当前项目中普通规则、参数、变量、函数开源，任何单位或个人不得对本软件商业版（体验环境）进行抄袭、复制、修改、分发、逆向工程、商业用途等任何形式的非法使用。违者将面临人民币 20 万元的法定罚款及可能的法律追责。举报侵权行为可获得实际罚款金额 40% 的现金奖励。
+### 我正在参加 Gitee 2025 最受欢迎的开源软件投票活动，快来给我投票吧！https://gitee.com/activity/2025opensource?ident=IBB9GM
 
-## 最新产品（ https://gitee.com/shaiwz/data-platform-open ）：大数据集成平台可视化拖拽式大数据集成平台后端、包含数据流、数据源、数据对齐、查询模板、完善的监控等。
+### 仅对当前项目中普通规则、参数、变量、函数开源，任何单位或个人不得对本软件商业版（体验环境）进行抄袭、复制、修改、分发、逆向工程、商业用途等任何形式的非法使用。违者将面临人民币 20 万元的法定罚款及可能的法律追责。举报侵权行为可获得实际罚款金额 40% 的现金奖励。
+
+### 最新产品（ https://gitee.com/shaiwz/data-platform-open ）：大数据集成平台可视化拖拽式大数据集成平台后端、包含数据流、数据源、数据对齐、查询模板、完善的监控等。
 
 前端代码地址：https://gitee.com/aizuda/rule-engine-front-open  
 项目展示地址：http://ruleengine.cn/
+
+### 毕业认证
+
+<img src="https://oss-xuxin.oss-cn-beijing.aliyuncs.com/dp/img/c85f4b02c8fde9663abad3718524682c.jpg" alt="none" style="width: 60%;height: 60%;border-radius: 6px;">
 
 ##### 联系方式：
 
@@ -181,9 +182,9 @@ public class RuleEngineClientConfig {
 
 作者为了此项目经常熬夜到凌晨才设计完成核心部分以及整体运转，头发掉很多，后来见到了传说中的霸王洗发水，看下自己的口袋，含下买不起的泪水，辛苦捐助一瓶霸王洗发水吧！
 
-| 支付宝 |微信|
-|---|---|
-| ![支付宝](https://boot-rule.oss-cn-beijing.aliyuncs.com/%E6%94%AF%E4%BB%98%E5%AE%9D.png)| ![微信](https://boot-rule.oss-cn-beijing.aliyuncs.com/WechatIMG2.jpeg)|
+| 支付宝                                                                                   | 微信                                                                   |
+|---------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| ![支付宝](https://boot-rule.oss-cn-beijing.aliyuncs.com/%E6%94%AF%E4%BB%98%E5%AE%9D.png) | ![微信](https://boot-rule.oss-cn-beijing.aliyuncs.com/WechatIMG2.jpeg) |
 
 ### 如果觉得本项目对您有任何一点帮助，请点右上角 "Star" 支持一下， 并向您的基友、同事们宣传一下吧，谢谢！
 
