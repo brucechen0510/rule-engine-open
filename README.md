@@ -16,7 +16,7 @@
 
 ### 毕业认证
 
-<img src="https://oss-xuxin.oss-cn-beijing.aliyuncs.com/dp/img/c85f4b02c8fde9663abad3718524682c.jpg" alt="none" style="width: 60%;height: 60%;border-radius: 6px;">
+<img src="https://oss-xuxin.oss-accelerate.aliyuncs.com/dp/img/c85f4b02c8fde9663abad3718524682c.jpg" alt="none" style="width: 60%;height: 60%;border-radius: 6px;">
 
 ##### 联系方式：
 
