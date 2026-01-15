@@ -30,7 +30,7 @@ spring:
       name: master
       url: jdbc:mysql://localhost:3306/rule_engine_open?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
       username: root
-      password: 123456
+      password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 初始化大小，最小，最大
       initialSize: 10
@@ -62,10 +62,11 @@ spring:
       aop-patterns: cn.ruleengine.*.service.*
   #消息队列配置
   rabbitmq:
-    host: 127.0.0.1
+    host: 10.114.30.85
     port: 5672
-    username: guest
-    password: guest
+    virtual-host: mexico
+    username: mexico
+    password: 2Xegjxgd7a5R5gM2
     listener:
       simple:
         retry:
@@ -84,10 +85,9 @@ spring:
 
   #redis配置
   redis:
-    database: 2
-    host: 127.0.0.1
-    password: hidata!@#
-    port: 6379
+    cluster:
+      nodes:
+        - 10.114.31.119:6596,10.114.41.159:6502,10.114.8.84:6687,10.114.31.244:6505,10.114.29.209:6575,10.114.31.225:6492
     lettuce:
       pool:
         max-active: 2000
