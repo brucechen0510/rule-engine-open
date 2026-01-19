@@ -63,24 +63,6 @@ create index rule_engine_condition_group_condition_condition_id_index
 
 INSERT INTO rule_engine_condition_group_condition (id, condition_id, condition_group_id, order_no, create_time, update_time, deleted) VALUES (3019, 149, 2028, 0, '2023-08-11 12:30:59', '2023-08-11 12:30:59', 0);
 INSERT INTO rule_engine_condition_group_condition (id, condition_id, condition_group_id, order_no, create_time, update_time, deleted) VALUES (3020, 150, 2028, 1, '2023-08-11 12:38:34', '2023-08-11 12:38:34', 0);
-create table rule_engine_data_reference
-(
-    id             int auto_increment
-        primary key,
-    data_type      tinyint     not null,
-    data_id        int         not null,
-    reference_data json        null,
-    version        varchar(50) null,
-    create_time    timestamp   null,
-    update_time    timestamp   null,
-    deleted        tinyint     null
-);
-
-create index rule_engine_data_reference_data_type_data_id_index
-    on rule_engine_data_reference (data_type, data_id);
-
-INSERT INTO rule_engine_data_reference (id, data_type, data_id, reference_data, version, create_time, update_time, deleted) VALUES (507, 0, 214, '{"formulaIds": [], "variableIds": [], "generalRuleIds": [], "inputParameterIds": [166]}', '1.0', '2023-08-11 12:37:25', '2023-08-11 12:37:25', 0);
-INSERT INTO rule_engine_data_reference (id, data_type, data_id, reference_data, version, create_time, update_time, deleted) VALUES (508, 0, 214, '{"formulaIds": [], "variableIds": [165], "generalRuleIds": [], "inputParameterIds": [166]}', '2.0', '2023-08-11 12:38:35', '2023-08-11 12:38:35', 0);
 create table rule_engine_function
 (
     id                int auto_increment
@@ -289,24 +271,6 @@ create index rule_engine_input_parameter_value_type_index
     on rule_engine_input_parameter (value_type);
 
 INSERT INTO rule_engine_input_parameter (id, name, code, workspace_id, create_user_id, create_user_name, value_type, description, create_time, update_time, deleted) VALUES (166, '名称', 'name', 2, 1, 'admin', 'STRING', '', '2023-08-11 12:18:41', '2023-08-11 12:18:41', 0);
-create table rule_engine_operation_record
-(
-    id             int auto_increment
-        primary key,
-    user_id        int          not null,
-    username       varchar(50)  null,
-    workspace_id   int          not null,
-    workspace_code varchar(50)  null,
-    description    varchar(500) null,
-    operation_time timestamp    null,
-    data_type      tinyint      null,
-    data_id        int          null
-);
-
-INSERT INTO rule_engine_operation_record (id, user_id, username, workspace_id, workspace_code, description, operation_time, data_type, data_id) VALUES (1, 1, 'admin', 2, 'test', 'admin <a>创建</a> 了一个普通规则 <a>测试(test)</a>', '2023-08-11 12:29:47', 0, 214);
-INSERT INTO rule_engine_operation_record (id, user_id, username, workspace_id, workspace_code, description, operation_time, data_type, data_id) VALUES (2, 1, 'admin', 2, 'test', 'admin <a>生成</a> 了一个测试版本普通规则 <a>测试(test)</a>，版本号：<a>1.0</a>', '2023-08-11 12:37:25', 0, 214);
-INSERT INTO rule_engine_operation_record (id, user_id, username, workspace_id, workspace_code, description, operation_time, data_type, data_id) VALUES (3, 1, 'admin', 2, 'test', 'admin <a>发布</a> 了一个线上版本普通规则 <a>测试(test)</a>，版本号：<a>1.0</a>', '2023-08-11 12:37:45', 0, 214);
-INSERT INTO rule_engine_operation_record (id, user_id, username, workspace_id, workspace_code, description, operation_time, data_type, data_id) VALUES (4, 1, 'admin', 2, 'test', 'admin <a>生成</a> 了一个测试版本普通规则 <a>测试(test)</a>，版本号：<a>2.0</a>', '2023-08-11 12:38:36', 0, 214);
 create table rule_engine_rule
 (
     id                int auto_increment
@@ -332,40 +296,6 @@ create index rule_engine_rule_name_index
 
 
 INSERT INTO rule_engine_rule (id, name, code, description, create_user_id, create_user_name, action_value, action_type, action_value_type, create_time, update_time, deleted) VALUES (646, '测试', 'test', null, 1, 'admin', 'true', 2, 'BOOLEAN', '2023-08-11 12:29:46', '2023-08-11 12:29:46', 0);
-create table rule_engine_system_log
-(
-    id              int auto_increment comment 'id'
-        primary key,
-    user_id         int          null,
-    username        varchar(50)  null,
-    description     varchar(300) null,
-    tag             varchar(50)  null,
-    ip              varchar(30)  not null comment '请求ip',
-    browser         varchar(50)  null comment '浏览器',
-    browser_version varchar(50)  null comment '浏览器版本',
-    `system`        varchar(100) not null comment '请求者系统',
-    detailed        varchar(500) not null comment '请求者系统详情',
-    mobile          tinyint(1)   null comment '是否为移动平台',
-    ages            mediumtext   null comment '请求参数',
-    request_url     varchar(300) not null comment '请求url',
-    end_time        timestamp    null on update CURRENT_TIMESTAMP comment '请求结束时间',
-    running_time    bigint(10)   null comment '运行时间',
-    return_value    mediumtext   null,
-    exception       text         null comment '异常',
-    request_id      varchar(200) null,
-    create_time     timestamp    null on update CURRENT_TIMESTAMP,
-    update_time     timestamp    null on update CURRENT_TIMESTAMP,
-    deleted         tinyint(1)   null
-);
-
-create index rule_engine_system_log_ip_index
-    on rule_engine_system_log (ip);
-
-create index rule_engine_system_log_request_id_index
-    on rule_engine_system_log (request_id);
-
-create index rule_engine_system_log_user_id_index
-    on rule_engine_system_log (user_id);
 
 
 create table rule_engine_user
@@ -393,24 +323,6 @@ create index rule_engine_user_username_index
     on rule_engine_user (username);
 
 INSERT INTO rule_engine_user (id, username, password, email, phone, avatar, sex, is_admin, description, create_time, update_time, deleted) VALUES (1, 'admin', '5f329d3ac22671f7b214c461e58c27f3', 'admin5@qq.com', null, 'http://oss-boot-test.oss-cn-beijing.aliyuncs.com/ruleengine/.jpg?Expires=33162452746&OSSAccessKeyId=LTAIyEa5SulNXbQa&Signature=bW7G1yt1t%2BjeP3xRIALJbHY8m5U%3D', '男', 0, '7417171471', '2021-06-23 19:09:59', '2021-12-22 04:38:31', 0);
-create table rule_engine_user_workspace
-(
-    id                int auto_increment
-        primary key,
-    user_id           int(30)   not null,
-    workspace_id      int       null,
-    is_administration tinyint   null comment '1是空间管理员 2是普通用户',
-    create_time       timestamp null,
-    update_time       timestamp null,
-    deleted           tinyint   null
-)
-    comment '工作空间成员表';
-
-create index rule_engine_user_workspace_user_id_index
-    on rule_engine_user_workspace (user_id);
-
-create index rule_engine_user_workspace_user_id_workspace_id_index
-    on rule_engine_user_workspace (user_id, workspace_id);
 
 
 create table rule_engine_variable
@@ -437,46 +349,6 @@ create index rule_engine_variable_value_type_index
     on rule_engine_variable (value_type);
 
 INSERT INTO rule_engine_variable (id, name, description, value_type, workspace_id, create_user_id, create_user_name, type, value, create_time, update_time, deleted) VALUES (165, '测试变量', null, 'BOOLEAN', 2, 1, 'admin', 2, 'true', '2023-08-11 12:38:10', '2023-08-11 12:38:10', 0);
-create table rule_engine_workspace
-(
-    id                int auto_increment
-        primary key,
-    code              varchar(20)  null,
-    name              varchar(30)  not null,
-    access_key_id     varchar(100) null,
-    access_key_secret varchar(100) null,
-    description       varchar(500) null,
-    create_time       timestamp    null,
-    update_time       timestamp    null,
-    deleted           tinyint      null
-)
-    comment '工作空间';
-
-create index rule_engine_workspace_code_index
-    on rule_engine_workspace (code);
-
-create index rule_engine_workspace_name_index
-    on rule_engine_workspace (name);
-
-INSERT INTO rule_engine_workspace (id, code, name, access_key_id, access_key_secret, description, create_time, update_time, deleted) VALUES (1, 'default', '默认工作空间', 'root', '123456', '默认的', '2020-11-21 02:41:33', '2020-11-21 02:41:34', 0);
-INSERT INTO rule_engine_workspace (id, code, name, access_key_id, access_key_secret, description, create_time, update_time, deleted) VALUES (2, 'test', '测试', 'gdfhdgfh', 'sdfasdfas', '供测试使用', '2020-11-21 19:36:12', '2020-11-21 19:36:13', 0);
-INSERT INTO rule_engine_workspace (id, code, name, access_key_id, access_key_secret, description, create_time, update_time, deleted) VALUES (4, 'prd', '线上', 'asdfasdf', 'asasdfasdfas', '请勿随意修改', '2020-11-07 21:49:36', '2020-11-07 21:49:38', 0);
 
 
 
-CREATE TABLE `rule_engine_data_permission` (
-                                               `id` int(11) NOT NULL AUTO_INCREMENT,
-                                               `user_id` int(11) DEFAULT NULL,
-                                               `data_type` int(11) NOT NULL COMMENT '0：规则  1：规则集  2：决策表',
-                                               `data_id` int(11) NOT NULL COMMENT '如果data_type=0 则此data_id为规则的id',
-                                               `read_authority` tinyint(4) DEFAULT NULL COMMENT '0有读权限',
-                                               `write_authority` tinyint(4) DEFAULT NULL COMMENT '0有写权限',
-                                               `publish_authority` tinyint(4) DEFAULT NULL COMMENT '0有发布规则权限',
-                                               `create_user_id` int(11) DEFAULT NULL COMMENT '谁添加的这个权限，可以是这个规则的创建人，也可以是管理',
-                                               `create_time` timestamp NULL DEFAULT NULL,
-                                               `update_time` timestamp NULL DEFAULT NULL,
-                                               `deleted` tinyint(4) DEFAULT NULL,
-                                               PRIMARY KEY (`id`),
-                                               KEY `rule_engine_data_permission_data_type_data_id_index` (`data_type`,`data_id`),
-                                               KEY `rule_engine_data_permission_user_id_index` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户数据权限表';
