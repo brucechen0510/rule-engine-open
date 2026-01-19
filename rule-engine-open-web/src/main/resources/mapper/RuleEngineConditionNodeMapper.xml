@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ruleengine.web.store.mapper.RuleEngineConditionNodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.ruleengine.web.store.entity.RuleEngineConditionNode">
+        <id column="id" property="id"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="node_type" property="nodeType"/>
+        <result column="logical_operator" property="logicalOperator"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="condition_name" property="conditionName"/>
+        <result column="condition_description" property="conditionDescription"/>
+        <result column="left_type" property="leftType"/>
+        <result column="left_value" property="leftValue"/>
+        <result column="left_value_type" property="leftValueType"/>
+        <result column="symbol" property="symbol"/>
+        <result column="right_type" property="rightType"/>
+        <result column="right_value" property="rightValue"/>
+        <result column="right_value_type" property="rightValueType"/>
+        <result column="group_name" property="groupName"/>
+        <result column="group_description" property="groupDescription"/>
+        <result column="workspace_id" property="workspaceId"/>
+        <result column="create_user_id" property="createUserId"/>
+        <result column="create_user_name" property="createUserName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, rule_id, parent_id, node_type, logical_operator, order_no,
+        condition_name, condition_description,
+        left_type, left_value, left_value_type, symbol,
+        right_type, right_value, right_value_type,
+        group_name, group_description,
+        workspace_id, create_user_id, create_user_name, create_time, update_time, deleted
+    </sql>
+
+    <!-- 根据规则ID查询所有条件节点 -->
+    <select id="selectByRuleId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM rule_engine_condition_node
+        WHERE rule_id = #{ruleId} AND deleted = 0
+        ORDER BY parent_id, order_no
+    </select>
+
+    <!-- 根据父节点ID查询子节点 -->
+    <select id="selectByParentId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM rule_engine_condition_node
+        WHERE parent_id = #{parentId} AND deleted = 0
+        ORDER BY order_no
+    </select>
+
+    <!-- 查询规则的根节点 -->
+    <select id="selectRootByRuleId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM rule_engine_condition_node
+        WHERE rule_id = #{ruleId} AND parent_id IS NULL AND deleted = 0
+        LIMIT 1
+    </select>
+
+    <!-- 获取子节点的最大排序号 -->
+    <select id="selectMaxOrderNoByParentId" resultType="java.lang.Integer">
+        SELECT COALESCE(MAX(order_no), -1)
+        FROM rule_engine_condition_node
+        WHERE parent_id = #{parentId} AND deleted = 0
+    </select>
+
+    <!-- 批量插入条件节点 -->
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO rule_engine_condition_node (
+            rule_id, parent_id, node_type, logical_operator, order_no,
+            condition_name, condition_description,
+            left_type, left_value, left_value_type, symbol,
+            right_type, right_value, right_value_type,
+            group_name, group_description,
+            workspace_id, create_user_id, create_user_name, create_time, update_time, deleted
+        ) VALUES
+        <foreach collection="nodes" item="item" separator=",">
+            (
+                #{item.ruleId}, #{item.parentId}, #{item.nodeType}, #{item.logicalOperator}, #{item.orderNo},
+                #{item.conditionName}, #{item.conditionDescription},
+                #{item.leftType}, #{item.leftValue}, #{item.leftValueType}, #{item.symbol},
+                #{item.rightType}, #{item.rightValue}, #{item.rightValueType},
+                #{item.groupName}, #{item.groupDescription},
+                #{item.workspaceId}, #{item.createUserId}, #{item.createUserName},
+                #{item.createTime}, #{item.updateTime}, #{item.deleted}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 根据规则ID删除所有条件节点 -->
+    <update id="deleteByRuleId">
+        UPDATE rule_engine_condition_node
+        SET deleted = 1, update_time = NOW()
+        WHERE rule_id = #{ruleId}
+    </update>
+
+</mapper>
